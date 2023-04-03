@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #fefa99;
+}
+
+/* Header */
+
+header .naslov {
+  width: 100%;
+  font-size: 3rem;
+  text-transform: uppercase;
+  color: #7b9745;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  color: #5d752d;
+}
+
+header nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: #c4fea9;
+  list-style: none;
+  font-size: 1.3rem;
+}
+
+header nav ul a {
+  width: 300px;
+  height: 50px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #649e49;
+}
+
+header nav ul a:hover {
+  background-color: #487f2e;
+  color: #bbe38c;
+}
+
+/* Main */
+
+main {
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+  margin-top: 1.5rem;
+  padding-left: 170px;
+}
+
+main .pikaso {
+  font-size: 3rem;
+  color: #487f2e;
+  text-shadow: 0px 0px 15px #487f2e;
+}
+
+.slike {
+  display: flex;
+  width: 600px;
+  height: 360px;
+  background-color: #c4fea9;
+  animation: fadeIn 1s;
+}
+
+img {
+  display: none;
+}
+
+img.active {
+  width: 300px;
+  height: 360px;
+  display: block;
+}
+
+.opis {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 300px;
+}
+
+.opis h1 {
+  margin: auto;
+}
+
+.indikator {
+  display: flex;
+  justify-content: center;
+  padding-left: 18rem;
+}
+
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.dot.active {
+  background-color: #487f2e;
+}
+
+/* Footer */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #487f2e;
+  color: #b9de8c;
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
