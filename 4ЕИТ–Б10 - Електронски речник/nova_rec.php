@@ -29,21 +29,71 @@
 
 <main>
 
+    <?php
+
+    include('konekcija.php');
+
+    $engleskaRec = $engleskaRecErr = $srpskaRec = $srpskaRecErr = $opis = $poruka = "";
+
+    function test_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (!empty($_POST['erec'])) {
+            $engleskaRec = $_POST['erec'];
+            $engleskaRecErr = "";
+        } else
+            $engleskaRecErr = "Obavezno polje.";
+
+        if (!empty($_POST['srec'])) {
+            $srpskaRec = $_POST['srec'];
+            $srpskaRecErr = "";
+        } else
+            $srpskaRecErr = "Obavezno polje.";
+
+            $opis = $_POST['opis'];
+
+        if (!empty($engleskaRec) && !empty($srpskaRec)) {
+            $sql = "INSERT INTO Recnik(Engleski, Srpski, Opis)
+        VALUES ('$engleskaRec', '$srpskaRec', '$opis')";
+            if ($conn->query($sql) === TRUE) {
+                $poruka = 'Uspesno uneto';
+            } else {
+                $poruka = "Greska: " . $sql . "<br>" . $conn->error;
+            }
+        } else {
+            echo '<script type="text/javascript">
+                console.log("Greska."); 
+              </script>';
+        }
+        mysqli_close($conn);
+    }
+
+    ?>
+
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
         <div class="parent">
             <div class="element">
                 <label for="erec">Engleska rec:</label>
-                <input type="email" name="erec"> <br>
+                <input type="text" name="erec">
+                <?php echo $engleskaRecErr ?> <br>
             </div>
             <div class="element">
                 <label for="srec">Srpska rec:</label>
-                <input type="email" name="srec"> <br>
+                <input type="text" name="srec">
+                <?php echo $srpskaRecErr ?> <br>
             </div>
             <div class="element">
                 <label for="com">Opis:</label>
                 <textarea type="text" name="opis" rows="10" cols="20"> </textarea>
             </div>
             <button type="submit">Snimi</button>
+            <?php echo $poruka ?>
         </div>
     </form>
 

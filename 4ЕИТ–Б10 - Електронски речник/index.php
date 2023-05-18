@@ -21,11 +21,62 @@
                 <li>Dodavanje novih reči</li>
             </a>
             <a href="uputstvo.php">
-                <li>Autor</li>
+                <li>Uputstvo</li>
             </a>
         </ul>
     </nav>
 </header>
+
+<?php
+
+include('konekcija.php');
+
+$engleska = $opis = $prevod = $srpska = $poruka = "";
+
+if (isset($_POST['smer'])) {
+    function test_input($data)
+    {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $prevod = $_POST['smer'];
+
+        switch ($prevod) {
+            case 'se':
+                $srpska = $_POST['srec'];
+                $query = "SELECT * FROM Recnik WHERE Srpski = '$srpska' ";
+                $results = mysqli_query($conn, $query);
+                $row_count = mysqli_num_rows($results);
+
+                while ($row = mysqli_fetch_array($results)) {
+                    $engleska = $row['Engleski'];
+                    $opis = $row['Opis'];
+                }
+                break;
+
+            case 'es':
+                $engleska = $_POST['erec'];
+                $query = "SELECT * FROM Recnik WHERE Engleski = '$engleska' ";
+                $results = mysqli_query($conn, $query);
+                $row_count = mysqli_num_rows($results);
+
+                while ($row = mysqli_fetch_array($results)) {
+                    $srpska = $row['Srpski'];
+                    $opis = $row['Opis'];
+                }
+                break;
+
+            default:
+                $poruka = "Pogresan izbor.";
+                break;
+        }
+    }
+}
+?>
 
 <main>
 
@@ -41,17 +92,19 @@
             </div>
             <div class="element">
                 <label for="erec">Engleska rec:</label>
-                <input type="email" name="erec"> <br>
+                <input type="text" name="erec" value="<?php echo $engleska; ?>"> <br>
             </div>
             <div class="element">
                 <label for="srec">Srpska rec:</label>
-                <input type="email" name="srec"> <br>
+                <input type="text" name="srec" value="<?php echo $srpska; ?>"> <br>
             </div>
             <div class="element">
                 <label for="com">Opis:</label>
-                <textarea type="text" name="opis" rows="10" cols="20"> </textarea>
+                <textarea type="text" name="opis" rows="10" cols="20"> <?php echo $opis; ?> </textarea>
             </div>
             <button type="submit">Prevedi</button>
+
+            <?php echo $poruka; ?>
         </div>
     </form>
 
