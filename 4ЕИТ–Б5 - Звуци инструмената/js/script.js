@@ -31,7 +31,7 @@ let zvucnik = document.querySelectorAll("#zvucnik");
 instrumenti.forEach((i) => {
   i.addEventListener("click", () => {
     let url = linkovi[i.alt].link;
-    window.open(url, "widnow", "width=800, height=800");
+    window.open(url, "window", "width=800, height=800");
   });
 });
 zvucnik.forEach((i) => {

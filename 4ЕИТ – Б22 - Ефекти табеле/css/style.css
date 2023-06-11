@@ -1,0 +1,119 @@
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #264d73;
+    height: 80px;
+    color: #fff;
+    font-size: 1.3rem;
+    gap: 1rem;
+}
+
+.prvi {
+    border-right: 1px solid #fff;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}   
+
+/* MAIN */
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hr {
+    background-color: #C0C0C0;
+    width: 1000px;
+    height: 1px;
+    margin: .8rem;
+}
+
+table,
+td,
+th {
+    border: 1px solid;
+}
+
+table {
+    width: 50%;
+    height: 300px;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th {
+    background-color: gray;
+}
+
+th a {
+    color: purple;
+}
+
+.dugmici {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+button {
+    padding: 10px;
+}
+
+
+/* FOOTER */
+
+h1 {
+    padding: 20px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #264d73;
+    color: white;
+}
+
+.levo {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.desno ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+    gap: 1rem;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+ul a {
+    color: white;
+}
